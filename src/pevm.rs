@@ -299,7 +299,7 @@ pub fn execute_revm_sequential<DB: DatabaseRef<Error: Display>>(
 ) -> Result<Vec<ResultAndState>, PevmError> {
     // We use [State] with this specific builder instead of [CacheDB] to match Reth
     // as close as possible.
-    let mut builder = StateBuilder::new_with_database(db);
+    let mut builder = StateBuilder::new_with_database(revm::primitives::db::WrapDatabaseRef(db));
     if !spec_id.is_enabled_in(SPURIOUS_DRAGON) {
         builder = builder.without_state_clear();
     }

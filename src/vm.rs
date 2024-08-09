@@ -492,7 +492,7 @@ impl<'a, DB: DatabaseRef<Error: Display>> Database for VmDb<'a, DB> {
             .map_err(|err| ReadError::StorageError(err.to_string()))
     }
 
-    fn block_hash(&mut self, number: u64) -> Result<B256, Self::Error> {
+    fn block_hash(&mut self, number: U256) -> Result<B256, Self::Error> {
         self.vm
             .db
             .block_hash_ref(number)
@@ -794,6 +794,7 @@ pub(crate) fn build_evm<'a, DB: Database>(
         external: (),
     };
     // TODO: Support OP handlers
-    let handler = Handler::mainnet_with_spec(spec_id, with_reward_beneficiary);
+    let handler = Handler::mainnet_with_spec(spec_id);
+    //let handler = Handler::optimism_with_spec(spec_id);
     Evm::new(context, handler)
 }

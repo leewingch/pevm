@@ -17,9 +17,13 @@ defer-drop = "1.3.0"
 serde = "1.0"
 
 # Let's do our best to port needed REVM changes upstream
-revm = { git = "https://github.com/risechain/revm", rev = "be291f3cede849c4a824f05c4ad6c014f8fb533a", features = [
+#revm = { git = "https://github.com/risechain/revm", rev = "be291f3cede849c4a824f05c4ad6c014f8fb533a", features = [
+#    "serde",
+#] }
+revm = { version = "10.0.0", features = [
     "serde",
 ] }
+
 
 # RPC Storage dependencies
 # TODO: Put these behind an RPC flag to not pollute the core
@@ -38,6 +42,7 @@ criterion = "0.5.1"
 rand = "0.8.5"
 rayon = "1.10.0"
 revme = { git = "https://github.com/risechain/revm", rev = "be291f3cede849c4a824f05c4ad6c014f8fb533a" }
+#revme = { git = "https://github.com/bluealloy/revm" , version = "10.0.0" }
 rpmalloc = { version = "0.2.2", features = ["thread_cache", "global_cache"] }
 serde_json = "1.0.94"
 walkdir = "2.5.0"
