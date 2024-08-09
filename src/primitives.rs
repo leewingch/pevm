@@ -113,6 +113,8 @@ pub(crate) fn get_tx_env(tx: Transaction) -> Result<TxEnv, TransactionParsingErr
         //     .collect(),
         blob_hashes: tx.blob_versioned_hashes.unwrap_or_default(),
         max_fee_per_blob_gas: tx.max_fee_per_blob_gas.map(U256::from),
+        #[cfg(feature = "optimism")]
+        optimism: OptimismFields::default(),
         //authorization_list: None, // TODO: Support in the upcoming hardfork
     })
 }
