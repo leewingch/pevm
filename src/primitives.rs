@@ -2,7 +2,9 @@
 // Ideally REVM & Alloy would provide all these.
 
 use alloy_rpc_types::{Header, Transaction};
-use revm::primitives::{BlobExcessGasAndPrice, BlockEnv, SpecId, TransactTo, TxEnv, U256};
+use revm::primitives::{
+    BlobExcessGasAndPrice, BlockEnv, OptimismFields, SpecId, TransactTo, TxEnv, U256,
+};
 
 /// Get the REVM spec id of an Alloy block.
 // Currently hardcoding Ethereum hardforks from these reference:
