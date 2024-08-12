@@ -793,8 +793,9 @@ pub(crate) fn build_evm<'a, DB: Database>(
         ),
         external: (),
     };
-    // TODO: Support OP handlers
+    #[cfg(not(feature = "optimism"))]
     let handler = Handler::mainnet_with_spec(spec_id);
-    //let handler = Handler::optimism_with_spec(spec_id);
+    #[cfg(feature = "optimism")]
+    let handler = Handler::optimism_with_spec(spec_id);
     Evm::new(context, handler)
 }

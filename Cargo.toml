@@ -3,6 +3,9 @@ name = "pevm"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+optimism=[]
+
 [dependencies]
 # Put this behind a feature flag if there are use cases & users
 # that need more security guarantees even for internally hashing
@@ -21,7 +24,7 @@ serde = "1.0"
 #    "serde",
 #] }
 revm = { version = "10.0.0", features = [
-    "serde",
+    "serde", "optimism"
 ] }
 
 
